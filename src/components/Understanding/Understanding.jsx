@@ -1,10 +1,70 @@
-import React from 'react';
+// Core function imports
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+
+
+// Material imports
+import { Typography, Box, Button, Radio, RadioGroup, FormControl, FormControlLabel }  from '@material-ui/core';
 
 const Understanding = () => {
+    let history = useHistory();
+    const [understanding, setUnderstanding] = useState('3')
+    
+    const submitUnderstanding = () => {
+        //Submit to global state
+        history.push('/supported');
+    };
+
     return (
-        <div>
-            
-        </div>
+        <Box>
+            <Typography
+                variant="h3"
+                align="center"
+            >
+                How is your understanding today?
+            </Typography>
+            <FormControl component="fieldset">
+                <RadioGroup row aria-label="position" name="position" defaultValue="3" onChange={(event) => setUnderstanding(event.target.value)}>
+                    <FormControlLabel
+                        value="1"
+                        control={<Radio color="primary" />}
+                        label="1"
+                        labelPlacement="bottom"
+                    />
+                    <FormControlLabel
+                        value="2"
+                        control={<Radio color="primary" />}
+                        label="2"
+                        labelPlacement="bottom"
+                    />
+                    <FormControlLabel
+                        value="3"
+                        control={<Radio color="primary" />}
+                        label="3"
+                        labelPlacement="bottom"
+                    />
+                    <FormControlLabel
+                        value="4"
+                        control={<Radio color="primary" />}
+                        label="4"
+                        labelPlacement="bottom"
+                    />
+                    <FormControlLabel
+                        value="5"
+                        control={<Radio color="primary" />}
+                        label="5"
+                        labelPlacement="bottom"
+                    />
+                </RadioGroup>
+            </FormControl>
+            <Button
+                onClick={()=> submitUnderstanding()}
+                variant={'contained'}
+                color={'primary'}
+            >
+                Submit
+            </Button>
+        </Box>
     )
 }
 
