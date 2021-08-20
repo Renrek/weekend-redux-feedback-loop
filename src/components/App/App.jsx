@@ -13,6 +13,7 @@ import Supported from '../Supported/Supported';
 import Comments from '../Comments/Comments';
 import Review from '../Review/Review';
 import Admin from '../Admin/Admin';
+import Success from '../Success/Success';
 
 
 
@@ -43,6 +44,9 @@ function App() {
           </Route>
           <Route path="/review">
             <Review />
+          </Route>
+          <Route path="/success">
+            <Success />
           </Route>
           <Route path="/admin">
             <Admin />

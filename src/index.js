@@ -16,20 +16,28 @@ import { Provider } from 'react-redux';
 const surveyReducer = ( state = {}, action ) => {
     switch (action.type) {
         case 'ADD_FEELINGS':
-            state.feeling = action.payload;
+            return { ...state, feeling: action.payload }
+            //state.feeling = action.payload;
             break;
     
         case 'ADD_UNDERSTANDING':
-            state.understanding = action.payload;
+            return { ...state, understanding: action.payload }
+            //state.understanding = action.payload;
             break;
 
         case 'ADD_SUPPORTED':
-            state.support = action.payload;
+            return { ...state, support: action.payload }
+            //state.support = action.payload;
             break;
 
         case 'ADD_COMMENTS':
-            state.comments = action.payload;
+            return { ...state, comments: action.payload }
+            //state.comments = action.payload;
             break;
+
+        case 'RESET_SURVEY':
+            return {}
+            
         default:
             break;
     }
@@ -42,5 +50,6 @@ const storeInstance = createStore(
         surveyReducer,
     })
 );
+
 ReactDOM.render(<Provider store={storeInstance}><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();

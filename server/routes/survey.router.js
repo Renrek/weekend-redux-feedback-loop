@@ -5,7 +5,7 @@ const db = require('../modules/pool');
 
 
 
-db.on('connect', (error, client) => {
+db.on('error', (error, client) => {
     console.log('Error on idle of pg client', error);
     process.exit(-1);
 })
@@ -26,9 +26,16 @@ router.post('/', ( req, res ) => {
                         VALUES
                             ( $1, $2, $3, $4 )`;
     
-    
-    
-    res.sendStatus(200)
+    params = [ newSurvey.feeling, newSurvey.understanding, newSurvey.support, newSurvey.comments];
+
+    db.query(statement, params)
+        .then((result) => {
+            res.sendStatus(201);
+        })
+        .catch((error) => {
+            console.log('Error in INSERT', error);
+            res.sendStatus(500);
+        });
     
 });
 
