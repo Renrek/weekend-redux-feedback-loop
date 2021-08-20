@@ -1,17 +1,22 @@
 // Core function imports
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 
 // Material imports
 import { Typography, Box, Button, Radio, RadioGroup, FormControl, FormControlLabel }  from '@material-ui/core';
 
 const Supported = () => {
+    const dispatch = useDispatch();
     let history = useHistory();
     const [supported, setSupported] = useState('3')
     
     const submitSupported = () => {
-        //Submit to global state
+        dispatch({
+            type: 'ADD_SUPPORTED',
+            payload: supported
+        })
         history.push('/comments');
     };
 

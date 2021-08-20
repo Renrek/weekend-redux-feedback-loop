@@ -16,16 +16,24 @@ import { Provider } from 'react-redux';
 const surveyReducer = ( state = {}, action ) => {
     switch (action.type) {
         case 'ADD_FEELINGS':
-            state.feelings = action.payload;
+            state.feeling = action.payload;
             break;
     
         case 'ADD_UNDERSTANDING':
             state.understanding = action.payload;
             break;
-            
+
+        case 'ADD_SUPPORTED':
+            state.support = action.payload;
+            break;
+
+        case 'ADD_COMMENTS':
+            state.comments = action.payload;
+            break;
         default:
             break;
     }
+
     return state;
 }
 

@@ -1,18 +1,23 @@
 // Core function imports
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 
 // Material imports
 import { Typography, Box, TextField, Button }  from '@material-ui/core';
 
 const Comments = () => {
+    const dispatch = useDispatch();
     let history = useHistory();
     const [comments, setComments] = useState('3')
     
     const onFormSubmit = (event) => {
         event.preventDefault();
-        //Submit to global state
+        dispatch({
+            type: 'ADD_COMMENTS',
+            payload: comments
+        });
         history.push('/review');
     };
 
