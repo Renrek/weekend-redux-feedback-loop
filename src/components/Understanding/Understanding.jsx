@@ -1,24 +1,29 @@
 // Core function imports
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 
 // Material imports
 import { Typography, Box, Button, Radio, RadioGroup, FormControl, FormControlLabel }  from '@material-ui/core';
 
 const Understanding = () => {
+    const dispatch = useDispatch();
     let history = useHistory();
     const [understanding, setUnderstanding] = useState('3')
     
     const submitUnderstanding = () => {
-        //Submit to global state
+        dispatch({
+            type: 'ADD_UNDERSTANDING',
+            payload: understanding
+        });
         history.push('/supported');
     };
 
     return (
         <Box>
             <Typography
-                variant="h3"
+                variant="h5"
                 align="center"
             >
                 How is your understanding today?

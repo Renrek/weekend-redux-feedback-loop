@@ -18,7 +18,7 @@ const Supported = () => {
     return (
         <Box>
             <Typography
-                variant="h3"
+                variant="h5"
                 align="center"
             >
                 How supported are you today?

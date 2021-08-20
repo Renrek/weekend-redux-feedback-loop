@@ -1,17 +1,22 @@
 // Core function imports
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 
 // Material imports
 import { Typography, Box, Button, Radio, RadioGroup, FormControl, FormControlLabel }  from '@material-ui/core';
 
 const Feeling = () => {
+    const dispatch = useDispatch();
     let history = useHistory();
     const [feeling, setFeeling] = useState('3');
     
     const submitFeeling = () => {
-        //Submit to global state
+        dispatch({
+            type: 'ADD_FEELINGS',
+            payload: feeling
+        })
         history.push('/understanding');
 
     };
@@ -19,7 +24,7 @@ const Feeling = () => {
     return (
         <Box>
             <Typography
-                variant="h3"
+                variant="h5"
                 align="center"
             >
                 How are you feeling today?
