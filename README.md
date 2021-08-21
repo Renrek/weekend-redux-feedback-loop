@@ -10,5 +10,7 @@
 - [ ] Material UI tuning
 - [ ] Code Refactor /Cleanup
 - [ ] Comment Review / Cleanup
-- [ ] Admin Page
+- [X] Admin Page
 - [ ] This Read Me....
+- [ ] Check into Build
+- [ ] Host on renrek.com
