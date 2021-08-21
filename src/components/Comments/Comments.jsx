@@ -8,8 +8,10 @@ import { useDispatch } from 'react-redux';
 import { Typography, Box, TextField, Button }  from '@material-ui/core';
 
 const Comments = () => {
+
     const dispatch = useDispatch();
     let history = useHistory();
+    
     const [comments, setComments] = useState('')
     
     const onFormSubmit = (event) => {

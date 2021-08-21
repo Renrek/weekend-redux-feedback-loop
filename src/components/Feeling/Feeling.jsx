@@ -3,9 +3,16 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-
 // Material imports
-import { Typography, Box, Button, Radio, RadioGroup, FormControl, FormControlLabel }  from '@material-ui/core';
+import { 
+    Typography, 
+    Box, 
+    Button, 
+    Radio, 
+    RadioGroup, 
+    FormControl, 
+    FormControlLabel 
+}  from '@material-ui/core';
 
 const Feeling = () => {
     const dispatch = useDispatch();
