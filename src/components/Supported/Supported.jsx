@@ -3,13 +3,24 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-
-// Material imports
-import { Typography, Box, Button, Radio, RadioGroup, FormControl, FormControlLabel }  from '@material-ui/core';
+// Styling and Structure imports
+import { 
+    Typography, 
+    Box, 
+    Button, 
+    Radio, 
+    RadioGroup, 
+    FormControl, 
+    FormControlLabel 
+}  from '@material-ui/core';
 
 const Supported = () => {
+
+    // Hooks
     const dispatch = useDispatch();
     let history = useHistory();
+
+    // Local state for form processing. Default of 3 (average)
     const [supported, setSupported] = useState('3')
     
     const submitSupported = () => {
@@ -18,7 +29,7 @@ const Supported = () => {
             payload: supported
         })
         history.push('/comments');
-    };
+    }; // End submitSupported()
 
     return (
         <Box>
@@ -70,7 +81,7 @@ const Supported = () => {
                 Submit
             </Button>
         </Box>
-    )
-}
+    ) // End Componant Return
+} // End Supported
 
 export default Supported;

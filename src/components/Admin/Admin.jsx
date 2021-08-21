@@ -1,18 +1,34 @@
+// Core operation imports
 import React from 'react';
 import axios from 'axios';
-import { useState, useEffect } from 'react'
-import { Box } from '@material-ui/core';
-import { TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper, Button } from '@material-ui/core';
+import { useState, useEffect } from 'react';
+
+// Styling and Structure imports
+import DeleteIcon from '@material-ui/icons/Delete';
+import { 
+    Box,
+    TableContainer, 
+    Table, 
+    TableHead, 
+    TableBody, 
+    TableRow, 
+    TableCell, 
+    Paper, 
+    Button 
+} from '@material-ui/core';
+
+
 
 const Admin = () => {
 
+    // Store all data retrieved from fetchSurveys()
     const [surveys, setSurveys] = useState([]);
 
     useEffect(() => {
-       getFeedback();
+       fetchSurveys();
     }, [])
 
-    const getFeedback = () => {
+    const fetchSurveys = () => {
         axios.get('/api/survey')
             .then( response => {
                 setSurveys(response.data);
@@ -22,18 +38,18 @@ const Admin = () => {
                 alert('There was an error fetching information from the server.')
                 console.log('Error on GET', error);
             });
-    };
+    }; // End fetchSurveys()
 
     const deleteSurvey = (id) => {
         axios.delete(`/api/survey/${id}`)
             .then( response => {
-                getFeedback();
+                fetchSurveys();
             })
             .catch( error => {
                 alert('There was an error deleteing information from the server.')
                 console.log('Error on Delete', error);
             });
-    };
+    }; // End deleteSurvey()
 
     return (
         <Box>
@@ -61,7 +77,7 @@ const Admin = () => {
                                         variant={'contained'}
                                         color={'secondary'}
                                     >
-                                        Trash
+                                        <DeleteIcon />
                                     </Button>
                                 </TableCell>
                             </TableRow>
@@ -70,7 +86,7 @@ const Admin = () => {
                 </Table>
             </TableContainer>
         </Box>
-    )
-}
+    ) // End Componant Return
+} // End Admin()
 
 export default Admin;

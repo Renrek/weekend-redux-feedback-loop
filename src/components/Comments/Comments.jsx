@@ -8,8 +8,12 @@ import { useDispatch } from 'react-redux';
 import { Typography, Box, TextField, Button }  from '@material-ui/core';
 
 const Comments = () => {
+
+    //Hooks
     const dispatch = useDispatch();
     let history = useHistory();
+
+    // Local State for form processing
     const [comments, setComments] = useState('')
     
     const onFormSubmit = (event) => {
@@ -19,7 +23,7 @@ const Comments = () => {
             payload: comments
         });
         history.push('/review');
-    };
+    }; // End onFormSubmit()
 
     return (
         <Box>
@@ -36,7 +40,6 @@ const Comments = () => {
                     multiline
                     fullWidth
                     rows={5}
-                    
                     label="Enter Comments Here" 
                 />
                 <Button 
@@ -48,7 +51,7 @@ const Comments = () => {
                 </Button>
             </form>
         </Box>
-    )
-}
+    ) // End return of component
+} // End Comments()
 
 export default Comments;

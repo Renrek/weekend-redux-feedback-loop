@@ -2,7 +2,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-// Material imports
+// Styling and Structure imports
 import { Box, Button }  from '@material-ui/core';
 
 const Welcome = () => {
@@ -18,7 +18,7 @@ const Welcome = () => {
                 Take Survey
             </Button>
         </Box>
-    )
-}
+    ) // End Componant Return
+} // End Welcom()
 
 export default Welcome;

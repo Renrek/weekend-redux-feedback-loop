@@ -1,18 +1,21 @@
+// Core operation imports
 import React from 'react';
 import axios from 'axios';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+
+// Styling and Structure
 import { Button, Box } from '@material-ui/core';
 
 const Review = () => {
 
+    // Hooks
     let history = useHistory();
-    const dispatch = useDispatch();
 
+    // Local state for form processing. Default of 3 (average)
     const survey = useSelector(store => store.surveyReducer);
 
     const submitSurvey = () => {
-    
         axios.post( '/api/survey', survey )
         .then( response => {
             history.push('/success');
@@ -20,7 +23,7 @@ const Review = () => {
         .catch(error => {
             alert(error);
         });
-    }
+    } // End submitServey()
 
     return (
         <Box>
@@ -36,7 +39,7 @@ const Review = () => {
                 Submit Survey
             </Button>
         </Box>
-    )
-}
+    ) // End component return
+} // End Review()
 
 export default Review;
