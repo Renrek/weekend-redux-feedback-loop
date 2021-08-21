@@ -15,7 +15,17 @@ db.on('connect', (client) => {
 })
 
 router.get('/', ( req, res ) => {
-
+    const statement = `SELECT id, feeling, understanding, support, comments, flagged, date FROM feedback ORDER BY id ASC`;
+    db.query(statement)
+        .then((result) => {
+            res.send(result.rows);
+            console.log('Records fetched on GET /api/survey:',result.rows.length);
+            
+        })
+        .catch((error) => {
+            console.log('Error GET /api/survey', error);
+            res.sendStatus(500);  
+        });
 });
 
 router.post('/', ( req, res ) => {
@@ -31,6 +41,8 @@ router.post('/', ( req, res ) => {
     db.query(statement, params)
         .then((result) => {
             res.sendStatus(201);
+            console.log('New insert on POST /api/survey');
+            
         })
         .catch((error) => {
             console.log('Error in INSERT', error);
@@ -38,5 +50,19 @@ router.post('/', ( req, res ) => {
         });
     
 });
+
+router.delete('/:id', (req,res) => {
+    const statement = `DELETE FROM feedback WHERE id = $1`;
+    db.query(statement, [req.params.id])
+        .then((result) => {
+            res.sendStatus(200);
+            console.log('DELETE on /api/survey successful');
+            
+        })
+        .catch((error) => {
+            console.log('Error in INSERT', error);
+            res.sendStatus(500);
+        });
+})
 
 module.exports = router;

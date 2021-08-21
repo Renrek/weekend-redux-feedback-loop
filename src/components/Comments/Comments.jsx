@@ -10,7 +10,7 @@ import { Typography, Box, TextField, Button }  from '@material-ui/core';
 const Comments = () => {
     const dispatch = useDispatch();
     let history = useHistory();
-    const [comments, setComments] = useState('3')
+    const [comments, setComments] = useState('')
     
     const onFormSubmit = (event) => {
         event.preventDefault();
