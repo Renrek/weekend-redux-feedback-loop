@@ -1,7 +1,10 @@
+// Core operation imports
 import React from 'react';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+
+// Styling and Structure
 import { Button, Box } from '@material-ui/core';
 
 const Review = () => {
