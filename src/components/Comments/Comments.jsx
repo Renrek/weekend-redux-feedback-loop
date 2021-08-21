@@ -23,7 +23,7 @@ const Comments = () => {
             payload: comments
         });
         history.push('/review');
-    };
+    }; // End onFormSubmit()
 
     return (
         <Box>
@@ -51,7 +51,7 @@ const Comments = () => {
                 </Button>
             </form>
         </Box>
-    )
-}
+    ) // End return of component
+} // End Comments()
 
 export default Comments;

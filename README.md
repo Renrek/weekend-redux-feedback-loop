@@ -26,8 +26,8 @@ Joking aside, this project's intent is to demonstrate react routing, react redux
 ## ToDo
 
 - [x] Material UI tuning
-- [ ] Code Refactor /Cleanup
-- [ ] Comment Review / Cleanup
+- [x] Code Refactor /Cleanup
+- [x] Comment Review / Cleanup
 - [x] Admin Page
 - [ ] This Read Me....
 - [ ] Check into Build

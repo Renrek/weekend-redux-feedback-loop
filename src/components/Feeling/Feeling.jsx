@@ -15,8 +15,12 @@ import {
 }  from '@material-ui/core';
 
 const Feeling = () => {
+
+    // Hooks 
     const dispatch = useDispatch();
     let history = useHistory();
+
+    // Local state for form processing. Default of 3 (average)
     const [feeling, setFeeling] = useState('3');
     
     const submitFeeling = () => {
@@ -25,8 +29,7 @@ const Feeling = () => {
             payload: feeling
         })
         history.push('/understanding');
-
-    };
+    }; // End submitFeeling()
 
     return (
         <Box>
@@ -78,7 +81,7 @@ const Feeling = () => {
                 Submit
             </Button>
         </Box>
-    )
-}
+    ) // End Componant Return
+} // End Feeling()
 
 export default Feeling;

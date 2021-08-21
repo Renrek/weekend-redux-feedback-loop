@@ -3,14 +3,25 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-
-// Material imports
-import { Typography, Box, Button, Radio, RadioGroup, FormControl, FormControlLabel }  from '@material-ui/core';
+// Styling and Structure imports
+import { 
+    Typography, 
+    Box, 
+    Button, 
+    Radio, 
+    RadioGroup, 
+    FormControl, 
+    FormControlLabel 
+}  from '@material-ui/core';
 
 const Understanding = () => {
+
+    // Hooks
     const dispatch = useDispatch();
     let history = useHistory();
-    const [understanding, setUnderstanding] = useState('3')
+
+    // Local state for form processing. Default of 3 (average)
+    const [understanding, setUnderstanding] = useState('3');
     
     const submitUnderstanding = () => {
         dispatch({
@@ -18,7 +29,7 @@ const Understanding = () => {
             payload: understanding
         });
         history.push('/supported');
-    };
+    }; // End submitUnderstanding()
 
     return (
         <Box>
@@ -70,7 +81,7 @@ const Understanding = () => {
                 Submit
             </Button>
         </Box>
-    )
-}
+    ) // End Componant Return
+} // End Understanding()
 
 export default Understanding;

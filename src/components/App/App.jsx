@@ -17,8 +17,6 @@ import Admin from '../Admin/Admin';
 import Success from '../Success/Success';
 import Header from '../Header/Header';
 
-
-
 function App() {
 
   return (
