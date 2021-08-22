@@ -1,7 +1,7 @@
 // Core function imports
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Material imports
 import { 
@@ -14,18 +14,22 @@ import {
     FormControlLabel,
     Paper 
 }  from '@material-ui/core';
-import { Autorenew, CenterFocusStrong } from '@material-ui/icons';
-
-
 
 const Feeling = () => {
 
     // Hooks 
     const dispatch = useDispatch();
     let history = useHistory();
+    const storedSurvey = useSelector(state => state.surveyReducer);
 
+    
     // Local state for form processing. Default of 3 (average)
-    const [feeling, setFeeling] = useState('3');
+    // Using Radio component "checked", dynamically setting group default, creates an error.
+    const defaultAnswer = '3'; 
+    const storedFeeling = (storedSurvey.feeling !== undefined)
+        ? storedSurvey.feeling : defaultAnswer;
+        
+    const [feeling, setFeeling] = useState(storedFeeling);
     
     const submitFeeling = () => {
         dispatch({
@@ -51,34 +55,34 @@ const Feeling = () => {
                     How are you feeling today?
                 </Typography>
                 <FormControl component="fieldset">
-                    <RadioGroup row aria-label="position" name="position" defaultValue="3" onChange={(event) => setFeeling(event.target.value)}>
+                    <RadioGroup row aria-label="position" name="position" onChange={(event) => setFeeling(event.target.value)}>
                         <FormControlLabel
                             value="1"
-                            control={<Radio color="primary" />}
+                            control={<Radio color="primary" checked={feeling === "1"}/>}
                             label="1"
                             labelPlacement="bottom"
                         />
                         <FormControlLabel
                             value="2"
-                            control={<Radio color="primary" />}
+                            control={<Radio color="primary"  checked={feeling === "2"}/>}
                             label="2"
                             labelPlacement="bottom"
                         />
                         <FormControlLabel
                             value="3"
-                            control={<Radio color="primary" />}
+                            control={<Radio color="primary"  checked={feeling === "3"}/>}
                             label="3"
                             labelPlacement="bottom"
                         />
                         <FormControlLabel
                             value="4"
-                            control={<Radio color="primary" />}
+                            control={<Radio color="primary"  checked={feeling === "4"}/>}
                             label="4"
                             labelPlacement="bottom"
                         />
                         <FormControlLabel
                             value="5"
-                            control={<Radio color="primary" />}
+                            control={<Radio color="primary"  checked={feeling === "5"}/>}
                             label="5"
                             labelPlacement="bottom"
                         />
