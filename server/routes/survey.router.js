@@ -27,7 +27,8 @@ router.get('/', ( req, res ) => {
                             flagged, 
                             date 
                         FROM feedback 
-                        ORDER BY flagged ASC`;
+                        ORDER BY flagged DESC,
+                         id ASC`;
 
     db.query(statement)
         .then((result) => {
@@ -68,6 +69,7 @@ router.post('/', ( req, res ) => {
         });
 });
 
+// Remove survey record
 // DELETE on /api/survey
 router.delete('/:id', (req,res) => {
     const statement = `DELETE FROM feedback WHERE id = $1`;
@@ -79,6 +81,22 @@ router.delete('/:id', (req,res) => {
         })
         .catch((error) => {
             console.log('DELETE /api/survey Error:', error);
+            res.sendStatus(500);
+        });
+});
+
+// Toggle feedback 
+// PUT on /api/survey
+router.put('/:id', (req,res) => {
+    const statement = `UPDATE feedback SET flagged = NOT flagged WHERE id = $1`;
+    db.query(statement, [req.params.id])
+        .then((result) => {
+            res.sendStatus(200);
+            console.log('PUT /api/survey successful');
+            
+        })
+        .catch((error) => {
+            console.log('PUT /api/survey Error:', error);
             res.sendStatus(500);
         });
 });

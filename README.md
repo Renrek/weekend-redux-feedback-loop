@@ -16,6 +16,11 @@ Joking aside, this project's intent is to demonstrate react routing, react redux
 and a dash of Material UI by creating a survey workflow. In addition there is 
 an [admin page](http://localhost:3000/#/admin) for managing the submissions.
 
+### Noted Features
+
+ - Back Buttons while entering data, with information retention
+ - Admin page sorting, flagged floats to the top.
+
 ### Technologies Used
 
  - React
@@ -25,8 +30,6 @@ an [admin page](http://localhost:3000/#/admin) for managing the submissions.
  - Axios
  - Postgres Driver
 
-
-
 ### ToDo
 
 - [x] Material UI tuning
@@ -35,11 +38,11 @@ an [admin page](http://localhost:3000/#/admin) for managing the submissions.
 - [x] Admin Page
 - [x] This Read Me....
 - [x] Enable user to change data
-- [ ] Flag review entries
+- [x] Flag review entries
 
 ### Future Personal Stretch
 
- = [ ] Add a faster way of returning to review after editing - Conditional rendering of buttons once at 
+ - [ ] Add a faster way of returning to review after editing - Conditional rendering of buttons once at 
  - [ ] Refactor Radio Controls to be a mapped component
  - [ ] Check into Build
  - [ ] Host on renrek.com

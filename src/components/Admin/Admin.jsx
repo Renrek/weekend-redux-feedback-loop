@@ -33,7 +33,6 @@ const Admin = () => {
         axios.get('/api/survey')
             .then( response => {
                 setSurveys(response.data);
-                console.log(response.data);
             })
             .catch( error => {
                 alert('There was an error fetching information from the server.')
