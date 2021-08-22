@@ -14,8 +14,7 @@ import {
     TableRow, 
     TableCell, 
     Paper, 
-    Button,
-    Checkbox 
+    Button 
 } from '@material-ui/core';
 
 
@@ -52,24 +51,12 @@ const Admin = () => {
             });
     }; // End deleteSurvey()
 
-    const toggleFlag = (id) => {
-        axios.put(`/api/survey/${id}`)
-            .then( response => {
-                fetchSurveys();
-            })
-            .catch( error => {
-                alert('There was an error deleteing information from the server.')
-                console.log('Error on Put', error);
-            });
-    }
-
     return (
         <Box>
             <TableContainer component={Paper}>
                 <Table aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell align="left">Flagged</TableCell>
                             <TableCell align="left">Feeling</TableCell>
                             <TableCell align="left">Comprehension</TableCell>
                             <TableCell align="left">Support</TableCell>
@@ -80,12 +67,6 @@ const Admin = () => {
                     <TableBody>
                         {surveys.map((row) => (
                             <TableRow key={row.id}>
-                                <TableCell align="left">
-                                    <Checkbox 
-                                        checked={row.flagged}
-                                        onChange={()=> toggleFlag(row.id)}
-                                    />
-                                </TableCell>
                                 <TableCell align="left">{row.feeling}</TableCell>
                                 <TableCell align="left">{row.understanding}</TableCell>
                                 <TableCell align="left">{row.support}</TableCell>
