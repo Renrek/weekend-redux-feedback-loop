@@ -61,7 +61,7 @@ const Admin = () => {
                             <TableCell align="left">Comprehension</TableCell>
                             <TableCell align="left">Support</TableCell>
                             <TableCell align="left">Comments</TableCell>
-                            <TableCell align="left">Delete</TableCell>
+                            <TableCell align="left"></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -76,8 +76,9 @@ const Admin = () => {
                                         onClick={() => deleteSurvey(row.id)}
                                         variant={'contained'}
                                         color={'secondary'}
+                                        startIcon={<DeleteIcon />}
                                     >
-                                        <DeleteIcon />
+                                        Remove
                                     </Button>
                                 </TableCell>
                             </TableRow>

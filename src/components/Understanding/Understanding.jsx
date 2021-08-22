@@ -73,13 +73,15 @@ const Understanding = () => {
                     />
                 </RadioGroup>
             </FormControl>
-            <Button
-                onClick={()=> submitUnderstanding()}
-                variant={'contained'}
-                color={'primary'}
-            >
-                Submit
-            </Button>
+            <Box mt={2}>
+                <Button
+                    onClick={()=> submitUnderstanding()}
+                    variant={'contained'}
+                    color={'primary'}
+                >
+                    Submit
+                </Button>
+            </Box>
         </Box>
     ) // End Componant Return
 } // End Understanding()

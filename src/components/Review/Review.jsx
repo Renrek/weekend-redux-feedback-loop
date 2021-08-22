@@ -5,7 +5,16 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 // Styling and Structure
-import { Button, Box } from '@material-ui/core';
+import { 
+    Button, 
+    Box,
+    TableContainer,
+    Table,
+    TableBody,
+    TableRow,
+    TableCell,
+    Paper 
+} from '@material-ui/core';
 
 const Review = () => {
 
@@ -27,17 +36,37 @@ const Review = () => {
 
     return (
         <Box>
-            Feelings: {survey.feeling}<br />
-            Understanding: {survey.understanding}<br />
-            Supported: {survey.support}<br />
-            Comments: {survey.comments}<br />
-            <Button 
-                onClick={() => submitSurvey()}
-                variant={'contained'}
-                color={'primary'}
-            >
-                Submit Survey
-            </Button>
+            <TableContainer component={Paper}>
+                <Table aria-label="simple table">
+                    <TableBody>
+                        <TableRow>
+                            <TableCell>Feeling</TableCell>
+                            <TableCell>{survey.feeling}</TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell>Comprehension</TableCell>
+                            <TableCell>{survey.understanding}</TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell>Support</TableCell>
+                            <TableCell>{survey.support}</TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell>Comments</TableCell>
+                            <TableCell>{survey.comments}</TableCell>
+                        </TableRow>
+                    </TableBody>
+                </Table>
+            </TableContainer>
+            <Box mt={2}>
+                <Button 
+                    onClick={() => submitSurvey()}
+                    variant={'contained'}
+                    color={'primary'}
+                >
+                    Submit Survey
+                </Button>
+            </Box>
         </Box>
     ) // End component return
 } // End Review()

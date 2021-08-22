@@ -22,18 +22,26 @@ const Success = () => {
     return (
         <Box>
             <Typography
+                variant="h2"
+                align="center"
+            >
+                Submitted!
+            </Typography>
+            <Typography
                 variant="h5"
                 align="center"
             >
                 Thank you for your valuable feedback!
             </Typography>
-            <Button
-                onClick={ () => reset() }
-                variant={'contained'}
-                color={'primary'}
-            >
-                Leave New Feedback
-            </Button>
+            <Box mt={2}>
+                <Button
+                    onClick={ () => reset() }
+                    variant={'contained'}
+                    color={'primary'}
+                >
+                    Leave New Feedback
+                </Button>
+            </Box>
         </Box>
     ) // End Componant Return
 } // End Success()

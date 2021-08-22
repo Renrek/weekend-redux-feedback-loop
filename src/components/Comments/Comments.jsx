@@ -30,6 +30,7 @@ const Comments = () => {
             <Typography
                 variant="h5"
                 align="center"
+                gutterBottom={true}
             >
                 Do you have any comments for today?
             </Typography>
@@ -42,13 +43,15 @@ const Comments = () => {
                     rows={5}
                     label="Enter Comments Here" 
                 />
-                <Button 
-                    type="submit"
-                    variant={'contained'}
-                    color={'primary'}
-                > 
-                    Submit
-                </Button>
+                <Box mt={2}>
+                    <Button 
+                        type="submit"
+                        variant={'contained'}
+                        color={'primary'}
+                    > 
+                        Submit
+                    </Button>
+                </Box>
             </form>
         </Box>
     ) // End return of component

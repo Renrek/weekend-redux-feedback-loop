@@ -12,7 +12,9 @@ __________
 
 ## Description
 
-Joking aside, this project's intent is to demonstrate react routing, react redux, and a dash of Material UI by creating a survey workflow. In addition there is an admin page for managing the submissions.
+Joking aside, this project's intent is to demonstrate react routing, react redux, 
+and a dash of Material UI by creating a survey workflow. In addition there is 
+an [admin page](http://localhost:3000/#/admin) for managing the submissions.
 
 ## Technologies Used
 
@@ -22,6 +24,8 @@ Joking aside, this project's intent is to demonstrate react routing, react redux
  - Material UI
  - Axios
  - Postgres Driver
+
+
 
 ## ToDo
 

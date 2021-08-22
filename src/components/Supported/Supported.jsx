@@ -73,13 +73,15 @@ const Supported = () => {
                     />
                 </RadioGroup>
             </FormControl>
-            <Button
-                onClick={()=> submitSupported()}
-                variant={'contained'}
-                color={'primary'}
-            >
-                Submit
-            </Button>
+            <Box mt={2}>
+                <Button
+                    onClick={()=> submitSupported()}
+                    variant={'contained'}
+                    color={'primary'}
+                >
+                    Submit
+                </Button>
+            </Box>
         </Box>
     ) // End Componant Return
 } // End Supported
