@@ -7,13 +7,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { 
     Typography, 
     Box, 
-    Button, 
+    Button,
+    ButtonGroup, 
     Radio, 
     RadioGroup, 
     FormControl, 
     FormControlLabel,
     Paper 
 }  from '@material-ui/core';
+
+import { ArrowBack, ArrowForward } from '@material-ui/icons';
 
 const Feeling = () => {
 
@@ -26,18 +29,27 @@ const Feeling = () => {
     // Local state for form processing. Default of 3 (average)
     // Using Radio component "checked", dynamically setting group default, creates an error.
     const defaultAnswer = '3'; 
-    const storedFeeling = (storedSurvey.feeling !== undefined)
+    const defaultValue = (storedSurvey.feeling !== undefined)
         ? storedSurvey.feeling : defaultAnswer;
         
-    const [feeling, setFeeling] = useState(storedFeeling);
+    const [feeling, setFeeling] = useState(defaultValue);
     
     const submitFeeling = () => {
         dispatch({
             type: 'ADD_FEELINGS',
             payload: feeling
-        })
-        history.push('/understanding');
+        }) 
     }; // End submitFeeling()
+
+    const forwardStep = () => {
+        submitFeeling();
+        history.push('/understanding');
+    }; // End forwardStep()
+
+    const backStep = () => {
+        submitFeeling();
+        history.push('/')
+    }; // End backStep()
 
     return (
         <Box>
@@ -89,13 +101,23 @@ const Feeling = () => {
                     </RadioGroup>
                 </FormControl>
                 <Box mt={2}>
-                    <Button
-                        onClick={()=> submitFeeling()}
+                    <ButtonGroup
                         variant={'contained'}
                         color={'primary'}
                     >
-                        Submit
-                    </Button>
+                        <Button 
+                            onClick={()=> backStep()} 
+                            startIcon={<ArrowBack />}
+                        >
+                            Back
+                        </Button>
+                        <Button 
+                            onClick={()=> forwardStep()}
+                            endIcon={<ArrowForward />}
+                        >
+                            Next
+                        </Button>
+                    </ButtonGroup>
                 </Box>
             </Paper>
         </Box>

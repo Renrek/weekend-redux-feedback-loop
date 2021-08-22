@@ -1,29 +1,54 @@
 // Core function imports
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 // Material imports
-import { Typography, Box, TextField, Button, Paper }  from '@material-ui/core';
+import { 
+    Typography, 
+    Box, 
+    TextField, 
+    Button, 
+    ButtonGroup, 
+    Paper 
+}  from '@material-ui/core';
+
+import { ArrowBack, ArrowForward } from '@material-ui/icons';
 
 const Comments = () => {
 
     //Hooks
     const dispatch = useDispatch();
     let history = useHistory();
+    const storedSurvey = useSelector(state => state.surveyReducer);
 
-    // Local State for form processing
-    const [comments, setComments] = useState('')
+    // Local state for form processing. Default of '' empty string
+    // Using Radio component "checked", dynamically setting group default, creates an error.
+    const defaultAnswer = ''; 
+    const defaultValue = (storedSurvey.comments !== undefined)
+        ? storedSurvey.comments : defaultAnswer;
+
+    const [comments, setComments] = useState(defaultValue);
     
-    const onFormSubmit = (event) => {
-        event.preventDefault();
+    const submitComments = () => {
         dispatch({
             type: 'ADD_COMMENTS',
             payload: comments
         });
-        history.push('/review');
+        
     }; // End onFormSubmit()
+
+    const forwardStep = (event) => {
+        event.preventDefault();
+        submitComments();
+        history.push('/review');
+    }; // End forwardStep()
+
+    const backStep = () => {
+        submitComments();
+        history.push('/supported')
+    }; // End backStep()
 
     return (
         <Box>
@@ -41,8 +66,9 @@ const Comments = () => {
                 >
                     Do you have any comments for today?
                 </Typography>
-                <form noValidate autoComplete="off" onSubmit={onFormSubmit}>
+                <form noValidate autoComplete="off" onSubmit={forwardStep}>
                     <TextField 
+                        value={comments}
                         onChange={(event)=> setComments(event.target.value)}
                         variant="outlined"
                         multiline
@@ -51,13 +77,23 @@ const Comments = () => {
                         label="Enter Comments Here" 
                     />
                     <Box mt={2}>
+                        <ButtonGroup
+                        variant={'contained'}
+                        color={'primary'}
+                    >
+                        <Button 
+                            onClick={()=> backStep()} 
+                            startIcon={<ArrowBack />}
+                        >
+                            Back
+                        </Button>
                         <Button 
                             type="submit"
-                            variant={'contained'}
-                            color={'primary'}
-                        > 
-                            Submit
+                            endIcon={<ArrowForward />}
+                        >
+                            Next
                         </Button>
+                    </ButtonGroup>
                     </Box>
                 </form>
             </Paper>

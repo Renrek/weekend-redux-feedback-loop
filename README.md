@@ -16,7 +16,7 @@ Joking aside, this project's intent is to demonstrate react routing, react redux
 and a dash of Material UI by creating a survey workflow. In addition there is 
 an [admin page](http://localhost:3000/#/admin) for managing the submissions.
 
-## Technologies Used
+### Technologies Used
 
  - React
  - React-Redux
@@ -27,15 +27,20 @@ an [admin page](http://localhost:3000/#/admin) for managing the submissions.
 
 
 
-## ToDo
+### ToDo
 
 - [x] Material UI tuning
 - [x] Code Refactor /Cleanup
 - [x] Comment Review / Cleanup
 - [x] Admin Page
-- [ ] This Read Me....
-- [ ] Check into Build
-- [ ] Host on renrek.com
-- [ ] Enable user to change data
+- [x] This Read Me....
+- [x] Enable user to change data
 - [ ] Flag review entries
+
+### Future Personal Stretch
+
+ = [ ] Add a faster way of returning to review after editing - Conditional rendering of buttons once at 
+ - [ ] Refactor Radio Controls to be a mapped component
+ - [ ] Check into Build
+ - [ ] Host on renrek.com
 
