@@ -1,37 +1,54 @@
 // Core function imports
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Styling and Structure imports
 import { 
     Typography, 
     Box, 
-    Button, 
+    Button,
+    ButtonGroup,
     Radio, 
     RadioGroup, 
     FormControl, 
     FormControlLabel,
     Paper
 }  from '@material-ui/core';
-import { Autorenew } from '@material-ui/icons';
+
+import { ArrowBack, ArrowForward } from '@material-ui/icons';
 
 const Understanding = () => {
 
     // Hooks
     const dispatch = useDispatch();
     let history = useHistory();
+    const storedSurvey = useSelector(state => state.surveyReducer);
 
     // Local state for form processing. Default of 3 (average)
-    const [understanding, setUnderstanding] = useState('3');
+    // Using Radio component "checked", dynamically setting group default, creates an error.
+    const defaultAnswer = '3'; 
+    const defaultValue = (storedSurvey.understanding !== undefined)
+        ? storedSurvey.understanding : defaultAnswer;
+
+    const [understanding, setUnderstanding] = useState(defaultValue);
     
     const submitUnderstanding = () => {
         dispatch({
             type: 'ADD_UNDERSTANDING',
             payload: understanding
         });
-        history.push('/supported');
     }; // End submitUnderstanding()
+
+    const forwardStep = () => {
+        submitUnderstanding();
+        history.push('/supported');
+    }; // End forwardStep()
+
+    const backStep = () => {
+        submitUnderstanding();
+        history.push('/feeling')
+    }; // End backStep()
 
     return (
         <Box>
@@ -52,44 +69,54 @@ const Understanding = () => {
                     <RadioGroup row aria-label="position" name="position" defaultValue="3" onChange={(event) => setUnderstanding(event.target.value)}>
                         <FormControlLabel
                             value="1"
-                            control={<Radio color="primary" />}
+                            control={<Radio color="primary" checked={understanding === "1"}/>}
                             label="1"
                             labelPlacement="bottom"
                         />
                         <FormControlLabel
                             value="2"
-                            control={<Radio color="primary" />}
+                            control={<Radio color="primary" checked={understanding === "2"}/>}
                             label="2"
                             labelPlacement="bottom"
                         />
                         <FormControlLabel
                             value="3"
-                            control={<Radio color="primary" />}
+                            control={<Radio color="primary" checked={understanding === "3"}/>}
                             label="3"
                             labelPlacement="bottom"
                         />
                         <FormControlLabel
                             value="4"
-                            control={<Radio color="primary" />}
+                            control={<Radio color="primary" checked={understanding === "4"}/>}
                             label="4"
                             labelPlacement="bottom"
                         />
                         <FormControlLabel
                             value="5"
-                            control={<Radio color="primary" />}
+                            control={<Radio color="primary" checked={understanding === "5"}/>}
                             label="5"
                             labelPlacement="bottom"
                         />
                     </RadioGroup>
                 </FormControl>
                 <Box mt={2}>
-                    <Button
-                        onClick={()=> submitUnderstanding()}
+                    <ButtonGroup
                         variant={'contained'}
                         color={'primary'}
                     >
-                        Submit
-                    </Button>
+                        <Button 
+                            onClick={()=> backStep()} 
+                            startIcon={<ArrowBack />}
+                        >
+                            Back
+                        </Button>
+                        <Button 
+                            onClick={()=> forwardStep()}
+                            endIcon={<ArrowForward />}
+                        >
+                            Next
+                        </Button>
+                    </ButtonGroup>
                 </Box>
             </Paper>
         </Box>

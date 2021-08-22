@@ -6,10 +6,12 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 
+
+// surveyRuducer Map
 // let survey = {
-//     feelings: '0',
+//     feeling: '0',
 //     understanding: '0',
-//     supported: '0',
+//     support: '0',
 //     comments: ''
 // };
 
