@@ -11,8 +11,10 @@ import {
     Radio, 
     RadioGroup, 
     FormControl, 
-    FormControlLabel 
+    FormControlLabel,
+    Paper
 }  from '@material-ui/core';
+import { Autorenew } from '@material-ui/icons';
 
 const Understanding = () => {
 
@@ -33,53 +35,63 @@ const Understanding = () => {
 
     return (
         <Box>
-            <Typography
-                variant="h5"
-                align="center"
+            <Paper
+                style={{ 
+                    padding:20,
+                    width: 400,
+                    margin: "auto"
+                }}
             >
-                How is your understanding today?
-            </Typography>
-            <FormControl component="fieldset">
-                <RadioGroup row aria-label="position" name="position" defaultValue="3" onChange={(event) => setUnderstanding(event.target.value)}>
-                    <FormControlLabel
-                        value="1"
-                        control={<Radio color="primary" />}
-                        label="1"
-                        labelPlacement="bottom"
-                    />
-                    <FormControlLabel
-                        value="2"
-                        control={<Radio color="primary" />}
-                        label="2"
-                        labelPlacement="bottom"
-                    />
-                    <FormControlLabel
-                        value="3"
-                        control={<Radio color="primary" />}
-                        label="3"
-                        labelPlacement="bottom"
-                    />
-                    <FormControlLabel
-                        value="4"
-                        control={<Radio color="primary" />}
-                        label="4"
-                        labelPlacement="bottom"
-                    />
-                    <FormControlLabel
-                        value="5"
-                        control={<Radio color="primary" />}
-                        label="5"
-                        labelPlacement="bottom"
-                    />
-                </RadioGroup>
-            </FormControl>
-            <Button
-                onClick={()=> submitUnderstanding()}
-                variant={'contained'}
-                color={'primary'}
-            >
-                Submit
-            </Button>
+                <Typography
+                    variant="h5"
+                    align="center"
+                >
+                    How is your understanding today?
+                </Typography>
+                <FormControl component="fieldset">
+                    <RadioGroup row aria-label="position" name="position" defaultValue="3" onChange={(event) => setUnderstanding(event.target.value)}>
+                        <FormControlLabel
+                            value="1"
+                            control={<Radio color="primary" />}
+                            label="1"
+                            labelPlacement="bottom"
+                        />
+                        <FormControlLabel
+                            value="2"
+                            control={<Radio color="primary" />}
+                            label="2"
+                            labelPlacement="bottom"
+                        />
+                        <FormControlLabel
+                            value="3"
+                            control={<Radio color="primary" />}
+                            label="3"
+                            labelPlacement="bottom"
+                        />
+                        <FormControlLabel
+                            value="4"
+                            control={<Radio color="primary" />}
+                            label="4"
+                            labelPlacement="bottom"
+                        />
+                        <FormControlLabel
+                            value="5"
+                            control={<Radio color="primary" />}
+                            label="5"
+                            labelPlacement="bottom"
+                        />
+                    </RadioGroup>
+                </FormControl>
+                <Box mt={2}>
+                    <Button
+                        onClick={()=> submitUnderstanding()}
+                        variant={'contained'}
+                        color={'primary'}
+                    >
+                        Submit
+                    </Button>
+                </Box>
+            </Paper>
         </Box>
     ) // End Componant Return
 } // End Understanding()
