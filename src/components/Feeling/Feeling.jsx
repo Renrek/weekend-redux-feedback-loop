@@ -40,9 +40,8 @@ const Feeling = () => {
             <Paper
                 style={{ 
                     padding:20,
-                    width: 500,
+                    width: 400,
                     margin: "auto"
-                    
                 }}
             >
                 <Typography
@@ -85,16 +84,16 @@ const Feeling = () => {
                         />
                     </RadioGroup>
                 </FormControl>
+                <Box mt={2}>
+                    <Button
+                        onClick={()=> submitFeeling()}
+                        variant={'contained'}
+                        color={'primary'}
+                    >
+                        Submit
+                    </Button>
+                </Box>
             </Paper>
-            <Box mt={2}>
-                <Button
-                    onClick={()=> submitFeeling()}
-                    variant={'contained'}
-                    color={'primary'}
-                >
-                    Submit
-                </Button>
-            </Box>
         </Box>
     ) // End Componant Return
 } // End Feeling()

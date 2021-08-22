@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 
 
 // Material imports
-import { Typography, Box, TextField, Button }  from '@material-ui/core';
+import { Typography, Box, TextField, Button, Paper }  from '@material-ui/core';
 
 const Comments = () => {
 
@@ -27,32 +27,40 @@ const Comments = () => {
 
     return (
         <Box>
-            <Typography
-                variant="h5"
-                align="center"
-                gutterBottom={true}
+            <Paper
+                style={{ 
+                    padding:20,
+                    width: 400,
+                    margin: "auto"
+                }}
             >
-                Do you have any comments for today?
-            </Typography>
-            <form noValidate autoComplete="off" onSubmit={onFormSubmit}>
-                <TextField 
-                    onChange={(event)=> setComments(event.target.value)}
-                    variant="outlined"
-                    multiline
-                    fullWidth
-                    rows={5}
-                    label="Enter Comments Here" 
-                />
-                <Box mt={2}>
-                    <Button 
-                        type="submit"
-                        variant={'contained'}
-                        color={'primary'}
-                    > 
-                        Submit
-                    </Button>
-                </Box>
-            </form>
+                <Typography
+                    variant="h5"
+                    align="center"
+                    gutterBottom={true}
+                >
+                    Do you have any comments for today?
+                </Typography>
+                <form noValidate autoComplete="off" onSubmit={onFormSubmit}>
+                    <TextField 
+                        onChange={(event)=> setComments(event.target.value)}
+                        variant="outlined"
+                        multiline
+                        fullWidth
+                        rows={5}
+                        label="Enter Comments Here" 
+                    />
+                    <Box mt={2}>
+                        <Button 
+                            type="submit"
+                            variant={'contained'}
+                            color={'primary'}
+                        > 
+                            Submit
+                        </Button>
+                    </Box>
+                </form>
+            </Paper>
         </Box>
     ) // End return of component
 } // End Comments()
