@@ -27,7 +27,7 @@ router.get('/', ( req, res ) => {
                             flagged, 
                             date 
                         FROM feedback 
-                        ORDER BY flagged ASC`;
+                        ORDER BY id ASC`;
 
     db.query(statement)
         .then((result) => {
