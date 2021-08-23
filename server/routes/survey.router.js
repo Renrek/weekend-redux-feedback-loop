@@ -69,6 +69,7 @@ router.post('/', ( req, res ) => {
         });
 });
 
+// Remove survey record
 // DELETE on /api/survey
 router.delete('/:id', (req,res) => {
     const statement = `DELETE FROM feedback WHERE id = $1`;
@@ -83,6 +84,10 @@ router.delete('/:id', (req,res) => {
             res.sendStatus(500);
         });
 });
+
+
+
+// Toggle feedback 
 
 // PUT on /api/survey
 router.put('/:id', (req,res) => {
